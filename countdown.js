@@ -1,8 +1,14 @@
 // タイピング
-let words = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'pink'];
+// let words = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'pink'];
+var words = { 赤: "red", りんご: "apple", みかん: "orange", 空っぽ: "empty" }
 let wordCount = 0; // 完了した文字数
-let word = ''  // 現在入力中の文字
+let english = ''  // 現在入力中の文字(英語)
+let japanese = '' // 日本語
 let index = 0; // 入力中の文字の位置
+let end = false;
+let score = 0;
+
+const jp = document.getElementById('japanese');
 const target = document.getElementById('target');
 
 let missCount = 0;
@@ -38,11 +44,11 @@ const coutdownTimer = (tickCallBack, endCallBack
             if (nowSec <= 0) { // 残り時間なし
                 clearInterval(timer); // タイマー停止
                 const button = document.getElementById("timerstart");
-
-                button.disabled = false;   
-                target.textContent = 'クリア'; // 画面にクリアと表示  
-                countEl.textContent = 'タイプミス' + missCount + '個';  
-                
+                end = true; 
+                button.disabled = false;
+                target.textContent = 'スコア: ' + score; // 画面にクリアと表示  
+                countEl.textContent = 'タイプミス' + missCount + '個';
+                jp.textContent = '';
                 endCallBack(); // 終了通知
             } else {
                 tickCallBack(calcTime(nowSec)); // 残り時間通知
@@ -65,9 +71,11 @@ window.addEventListener("DOMContentLoaded", () => {
     // 終了通知受け取り関数
     const endFunc = () => {
         p.textContent = "終了しました";
+        jp.textContent = '';
     };
 
     button.addEventListener("click", () => {
+        score = 0;
         button.disabled = true;
         coutdownTimer(tickFunc, endFunc, 10);
     });
@@ -78,9 +86,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // ボタン押下時にゲームスタート処理を実行
 document.getElementById('timerstart').addEventListener('click', e => {
+    end = false;
     wordCount = 0;
-    word = words.splice(Math.floor(Math.random() * words.length), 1).join();
-    target.textContent = word;
+    // english = words.splice(Math.floor(Math.random() * words.length), 1).join();
+    var objLength = 0; // 連想配列の大きさ
+    var wordsArray = []; // 連想配列の値を入れるための配列
+    for (var i in words) {
+        objLength++;
+        wordsArray.push(words[i]);
+    }
+    var rnd = Math.floor(Math.random() * objLength);
+    english = wordsArray[rnd];
+    japanese = Object.keys(words).filter((key) => {
+        return words[key] === english;
+    });
+    target.textContent = english;
+    jp.textContent = japanese;
+    countEl.textContent = '';
     missCount = 0;
 });
 
@@ -88,13 +110,14 @@ document.getElementById('timerstart').addEventListener('click', e => {
 document.addEventListener('keydown', e => {
 
     // 入力したキーが先頭の文字と一致した場合
-    if (word.charAt(index) === e.key) {
+    if (english.charAt(index) === e.key && end === false) {
+        score = score + 1; // スコアカウントアップ
         index = index + 1; // 文字の位置をカウントアップ
         // 入力した文字を「_」に置き換える
-        target.textContent = '_'.repeat(index) + word.substring(index);
+        target.textContent = '_'.repeat(index) + english.substring(index);
 
         // 入力した文字が単語の最後だった場合
-        if (index === word.length) {
+        if (index === english.length) {
             // 1単語終了時
             index = 0; // 初期化
             wordCount = wordCount + 1;;   // 単語数をマイナス1
@@ -102,9 +125,21 @@ document.addEventListener('keydown', e => {
 
             // まだ入力する単語が残っている場合
             // 次の単語を画面にセットする
-            word = words.splice(Math.floor(Math.random() * words.length), 1).join();
-            target.textContent = word;
-
+            var objLength = 0; // 連想配列の大きさ
+            var wordsArray = []; // 連想配列の値を入れるための配列
+            for (var i in words) {
+                objLength++;
+                wordsArray.push(words[i]);
+            }
+            var rnd = Math.floor(Math.random() * objLength);
+            // english = words.splice(Math.floor(Math.random() * words.length), 1).join();
+            // english = words[rnd];
+            english = wordsArray[rnd];
+            japanese = Object.keys(words).filter((key) => {
+                return words[key] === english;
+            });
+            target.textContent = english;
+            jp.textContent = japanese;
         }
     } else {
         missCount = missCount + 1;

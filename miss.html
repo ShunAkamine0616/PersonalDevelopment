@@ -5,73 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Document</title>
 </head>
 
 <body>
     <div id="content">
-        <!-- <button id="timerstart">スタート</button> -->
         <p id="timer"></p>
 
         <p>
             <button type="button" id="timerstart" name="timerstart">スタート</button>
         </p>
+        <p id="japanese"></p>
         <p id="target"></p>
         <p id="count"></p>
     </div>
-    <script>
-
-        'use strict';
-
-        // let words = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'pink'];
-        // let wordCount = 0; // 完了した文字数
-        // let word = ''  // 現在入力中の文字
-        // let index = 0; // 入力中の文字の位置
-        // const target = document.getElementById('target');
-
-        // let missCount = 0;
-        // const countEl = document.getElementById('count');
-
-        // // ボタン押下時にゲームスタート処理を実行
-        // document.getElementById('timerstart').addEventListener('click', e => {
-        //     wordCount = 0;
-        //     word = words.splice(Math.floor(Math.random() * words.length), 1).join();
-        //     target.textContent = word;
-        //     missCount = 0;
-        // });
-
-        // // キー押下時の処理
-        // document.addEventListener('keydown', e => {
-
-        //     // 入力したキーが先頭の文字と一致した場合
-        //     if (word.charAt(index) === e.key) {
-        //         index = index + 1; // 文字の位置をカウントアップ
-        //         // 入力した文字を「_」に置き換える
-        //         target.textContent = '_'.repeat(index) + word.substring(index);
-
-        //         // 入力した文字が単語の最後だった場合
-        //         if (index === word.length) {
-        //             // 1単語終了時
-        //             index = 0; // 初期化
-        //             wordCount = wordCount + 1;;   // 単語数をマイナス1
-
-        //             if (wordCount === 5) {
-        //                 // ゲーム終了時
-        //                 target.textContent = 'クリア'; // 画面にクリアと表示  
-        //                 countEl.textContent = 'タイプミス' + missCount + '個';
-        //             } else {
-        //                 // まだ入力する単語が残っている場合
-        //                 // 次の単語を画面にセットする
-        //                 word = words.splice(Math.floor(Math.random() * words.length), 1).join();
-        //                 target.textContent = word;
-        //             }
-        //         }
-        //     } else {
-        //         missCount = missCount + 1;
-        //     }
-        // });
-
-    </script>
     <script src="countdown.js"></script>
 </body>
 
