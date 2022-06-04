@@ -1,6 +1,8 @@
 // タイピング
 // let words = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'pink'];
-var words = { 赤: "red", りんご: "apple", みかん: "orange", 空っぽ: "empty" }
+var words = { 赤:"red", りんご: "apple", みかん: "orange", 空っぽ: "empty", 
+"個性、性格":"personality", "現れる(e)": "emerge", "...にもかかわらず(d)":"despite", "（...に対する）考え方(a)":"attitude",
+を関与させる:"involve", 手に入る:"available"}
 let wordCount = 0; // 完了した文字数
 let english = ''  // 現在入力中の文字(英語)
 let japanese = '' // 日本語
@@ -46,7 +48,7 @@ const coutdownTimer = (tickCallBack, endCallBack
                 const button = document.getElementById("timerstart");
                 end = true; 
                 button.disabled = false;
-                target.textContent = 'スコア: ' + score; // 画面にクリアと表示  
+                target.textContent = 'スコア: ' + (score - missCount); // 画面にクリアと表示  
                 countEl.textContent = 'タイプミス' + missCount + '個';
                 jp.textContent = '';
                 endCallBack(); // 終了通知
@@ -77,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
         score = 0;
         button.disabled = true;
-        coutdownTimer(tickFunc, endFunc, 10);
+        coutdownTimer(tickFunc, endFunc, 60);
     });
 });
 
@@ -100,7 +102,8 @@ document.getElementById('timerstart').addEventListener('click', e => {
     japanese = Object.keys(words).filter((key) => {
         return words[key] === english;
     });
-    target.textContent = english;
+    // target.textContent = english;
+    target.textContent = '';
     jp.textContent = japanese;
     countEl.textContent = '';
     missCount = 0;
@@ -114,7 +117,8 @@ document.addEventListener('keydown', e => {
         score = score + 1; // スコアカウントアップ
         index = index + 1; // 文字の位置をカウントアップ
         // 入力した文字を「_」に置き換える
-        target.textContent = '_'.repeat(index) + english.substring(index);
+        // target.textContent = '_'.repeat(index) + english.substring(index);
+        target.textContent += e.key;
 
         // 入力した文字が単語の最後だった場合
         if (index === english.length) {
@@ -138,7 +142,8 @@ document.addEventListener('keydown', e => {
             japanese = Object.keys(words).filter((key) => {
                 return words[key] === english;
             });
-            target.textContent = english;
+            // target.textContent = english;
+            target.textContent = '';
             jp.textContent = japanese;
         }
     } else {
