@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ストップウォッチ</h1>
+    <p><button type="button" id="start-btn">スタート</button></p>
+    <p><button type="button" id="stop-btn">ストップ</button></p>
+    <p id="target"></p>
+    <script>
+        'use strict';
+
+        const target = document.getElementById('target');
+        let startTime = 0;
+        let stopTime = 0;
+
+        // スタート時の処理
+        let timeStart = () => {
+            startTime = new Date(); // 現在の日時を取得
+            target.textContent = '';
+        };
+
+        // ストップ時の処理
+        let timeStop = () => {
+            // 現在日時からスタートボタンを押した時の日時を引く
+            stopTime = new Date - startTime;
+            // ミリ秒単位なので、1000で割って秒単位にして、小数第２位まで表示
+            target.textContent = (stopTime / 1000).toFixed(2) + '秒';
+        }
+
+        // スタートボタン押下時処理
+        document.getElementById('start-btn').addEventListener('click', timeStart);
+        // ストップボタン押下時の処理
+        document.getElementById('stop-btn').addEventListener('click', timeStop);
+    </script>
+</body>
+</html>

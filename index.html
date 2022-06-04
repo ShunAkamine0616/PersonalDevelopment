@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html>
+<h1>要素の取得と画面への表示</h1>
+<p id="target1"></p>
+<p id="target2"></p>
+<script>
+    'use strict';  // ←文法チェックをしてくれる。決まり文句だと思ってください
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css" type="text/css">
-    <title>英語タイピング</title>
-</head>
+    // スラッシュ２つはコメント。処理に影響のないもの
 
-<body>
-    <p id="text"></p>
-    <!-- <script>
-        var p = document.getElementById('text');
-        var textLists = [
-            'Hello World',
-            'This is my App',
-            'How are you?',
-            'Hello Hello'
-        ];
+    // 要素の取得
+    // idがtarget1要素を取得して、p1という変数に入れる
+    const p1 = document.getElementById('target1');
+    // idがtarget2要素を取得して、p2という変数に入れる
+    const p2 = document.getElementById('target2');
 
-        p.textContent = textLists[0];
-    </script> -->
-    <script src="./index.js"></script>
-</body>
+    // 画面への表示
+    // target1の要素のコンテンツにHelloという文字を表示する
+    p1.textContent = 'Hello';
+    // target2の要素のコンテンツに100という数値を表示する
+    p2.textContent = 100;
 
-</html>
+</script>
