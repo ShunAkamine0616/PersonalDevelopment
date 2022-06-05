@@ -3,12 +3,15 @@
 var words = { 赤:"red", りんご: "apple", みかん: "orange", 空っぽ: "empty", 
 "個性、性格":"personality", "現れる(e)": "emerge", "...にもかかわらず(d)":"despite", "（...に対する）考え方(a)":"attitude",
 を関与させる:"involve", 手に入る:"available"}
-let wordCount = 0; // 完了した文字数
+var checkTexts = []; // １文字ずつ格納するための配列
 let english = ''  // 現在入力中の文字(英語)
 let japanese = '' // 日本語
 let index = 0; // 入力中の文字の位置
+let display = 0 // 表示中の文字の位置
 let end = false;
 let score = 0;
+var objLength = 0; // 連想配列の大きさ
+var wordsArray = []; // 連想配列の値を入れるための配列
 
 const jp = document.getElementById('japanese');
 const target = document.getElementById('target');
@@ -68,7 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // 残り時間通知受け取り関数
     const tickFunc = (time) => {
-        p.textContent = `残り${time[0]} 日 ${time[1]}時間 ${time[2]}分  ${time[3]}秒`;
+        p.textContent = `残り${time[2]}分  ${time[3]}秒`;
     };
     // 終了通知受け取り関数
     const endFunc = () => {
@@ -88,65 +91,110 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // ボタン押下時にゲームスタート処理を実行
 document.getElementById('timerstart').addEventListener('click', e => {
-    end = false;
-    wordCount = 0;
-    // english = words.splice(Math.floor(Math.random() * words.length), 1).join();
-    var objLength = 0; // 連想配列の大きさ
-    var wordsArray = []; // 連想配列の値を入れるための配列
-    for (var i in words) {
-        objLength++;
-        wordsArray.push(words[i]);
-    }
-    var rnd = Math.floor(Math.random() * objLength);
-    english = wordsArray[rnd];
-    japanese = Object.keys(words).filter((key) => {
-        return words[key] === english;
-    });
-    // target.textContent = english;
-    target.textContent = '';
-    jp.textContent = japanese;
-    countEl.textContent = '';
-    missCount = 0;
+    end = false; // まだ終了しない
+    target.textContent = ''; // ターゲット初期化
+    checkTexts();
+    jp.textContent = japanese; // 日本語を表示
+    countEl.textContent = ''; // タイプミスの表示　初期化
+    missCount = 0; // ミスを0に初期化
 });
 
 // キー押下時の処理
 document.addEventListener('keydown', e => {
 
     // 入力したキーが先頭の文字と一致した場合
-    if (english.charAt(index) === e.key && end === false) {
-        score = score + 1; // スコアカウントアップ
-        index = index + 1; // 文字の位置をカウントアップ
-        // 入力した文字を「_」に置き換える
-        // target.textContent = '_'.repeat(index) + english.substring(index);
-        target.textContent += e.key;
+    if ((english.charAt(index) === e.key || 32 === e.keyCode) && end === false) {
+        // 英単語が最後の文字まで表示されていないとき
+        if(target.textContent.length !== english.length) {
+            if(32 === e.keyCode) { // スペース押したとき
+                target.innerHTML += english.charAt(display); // 1文字増やす
+                display++;
+            } else { // スペース以外
+                if (display === index) {
+                    target.innerHTML += '<span class="add-blue">'+ english.charAt(index) + '</span>'; // 1文字増やす
+                    display++;
+                }
+                target.innerHTML.replace(target.innerHTML.charAt(index), '<span class="add-blue">'+ english.charAt(index) + '</span>');
+                score = score + 1; // スコアカウントアップ
+                index = index + 1; // 文字の位置をカウントアップ
+            }
+            console.log("index = " + index);
+            console.log("display = " + display);
+        } 
 
         // 入力した文字が単語の最後だった場合
         if (index === english.length) {
             // 1単語終了時
             index = 0; // 初期化
-            wordCount = wordCount + 1;;   // 単語数をマイナス1
+            display = 0;
 
-
-            // まだ入力する単語が残っている場合
             // 次の単語を画面にセットする
             var objLength = 0; // 連想配列の大きさ
-            var wordsArray = []; // 連想配列の値を入れるための配列
-            for (var i in words) {
+            var wordsArray = []; // 英単語の配列
+            for (var i in words) { 
                 objLength++;
                 wordsArray.push(words[i]);
             }
-            var rnd = Math.floor(Math.random() * objLength);
-            // english = words.splice(Math.floor(Math.random() * words.length), 1).join();
-            // english = words[rnd];
-            english = wordsArray[rnd];
-            japanese = Object.keys(words).filter((key) => {
+            var rnd = Math.floor(Math.random() * objLength); // ランダム生成
+            english = wordsArray[rnd]; // 英単語をランダムに選ぶ
+            japanese = Object.keys(words).filter((key) => { // 日本語をセット
                 return words[key] === english;
             });
-            // target.textContent = english;
-            target.textContent = '';
-            jp.textContent = japanese;
+        
+            target.textContent = ''; // ターゲット
+            jp.textContent = japanese;  // 日本語表示
         }
     } else {
-        missCount = missCount + 1;
+        missCount = missCount + 1; // ミスを追加
     }
 });
+
+// createText();
+
+function createText() {
+    target.textContent = ''; // 表示用
+    for (var i in words) { 
+        objLength++; 
+        wordsArray.push(words[i]); // 英単語を配列に入れる
+    }
+    var rnd = Math.floor(Math.random() * objLength); // ランダム生成
+
+    english = wordsArray[rnd];  // ランダムに英単語を選ぶ
+    japanese = Object.keys(words).filter((key) => {
+        return words[key] === english; // 対応する日本語を代入
+    });
+
+    checkTexts = english.split('').map(function (value) {
+        var span = document.createElement('span'); // spanタグ生成
+
+        span.textContent = value; // スパンタグに1文字入れる
+        // span.display=none;
+        target.appendChild(span); // pタグの中にspanタグを入れる
+        return span;
+    });
+}
+
+document.addEventListener('keydown', keyDown); 
+
+function keyDown(e) {
+    if ((e.key === checkTexts[0].textContent || 32 === e.keyCode) && end === false) { // ボタンを押して一致したら
+        // 英単語が最後の文字まで表示されていないとき
+        if(display !== english.length) { 
+            if(32 === e.keyCode) {
+                target.innerHTML += checkTexts[display]; // 1文字追加
+                display++;
+            } else {
+                if(index < display)
+                target
+            }
+        } 
+        
+        checkTexts[0].className = 'add-blue';  
+
+        checkTexts.shift(); // 最初の要素を消す
+
+        if (!checkTexts.length) createText(); // 大きさが0だったら次の文字を生成 
+    }
+
+    
+}
