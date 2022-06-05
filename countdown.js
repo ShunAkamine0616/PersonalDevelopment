@@ -204,6 +204,8 @@ function keyDown(e) {
                 }
             }
         if (!checkTexts.length) { // 文字がなくなったら
+            var aud = new Audio('crrect_answer2.mp3');
+            aud.play();
             createText(); // 次の文字を生成 
             target.textContent = ''; // ターゲット
             display = 0;
@@ -211,6 +213,8 @@ function keyDown(e) {
         } 
     } else {
         missCount++;
+        var aud = new Audio('blip04.mp3');
+        aud.play();
     }
 
     
