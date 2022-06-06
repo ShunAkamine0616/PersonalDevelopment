@@ -79,9 +79,30 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="registerInput", method = RequestMethod.GET)
-	public String register(@ModelAttribute("register") RegisterForm registerform, Model model) {
+	public String registerInput(@ModelAttribute("register") RegisterForm registerform, Model model) {
 		return "userRegistration";
 	}
+	
+	@RequestMapping(value="register", method = RequestMethod.POST)
+	public String register(@Validated @ModelAttribute("register") RegisterForm registerform, BindingResult bindingResult, Model model) {
+		// 入力チェック
+		if (bindingResult.hasErrors()) {
+			return "userRegistration";
+		}
+		userService.register(registerform.getLoginId(), registerform.getPassword(), registerform.getName());
+		User user =userService.findByUserIdAndPass(registerform.getLoginId(), registerform.getPassword());
+		
+		// ユーザー登録失敗
+		if(user == null) {
+			String errMsg = messageSource.getMessage("register.error", null, Locale.getDefault());
+			model.addAttribute("registerErrMsg", errMsg);
+			return "index";
+		} else {
+			session.setAttribute("user", user);
+			return "menu";
+		}
+	}
+	
 	
 	@RequestMapping("/title")
 	public String title(Model model) {

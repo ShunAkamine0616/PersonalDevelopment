@@ -20,4 +20,8 @@ public class UserServiceImpl implements UserService {
 	public User findByUserIdAndPass(String userId, String pass) {
 		return userDao.findByUserIdAndPass(userId, pass);
 	}
+	
+	public int register(String loginId, String password, String name) {
+		return userDao.register(loginId, password, name);
+	}
 }

@@ -16,6 +16,8 @@ import com.example.entity.User;
 public class PgUserDao implements UserDao {
 	private static final String SQL_SELECT_ALL = "SELECT * FROM users ORDER BY login_id";
 	private static final String SQL_SELECT_WHERE_USER_ID_AND_PASS = "SELECT * FROM users WHERE login_id = :login_id and password = :password";
+	private static final String SQL_INSERT = "INSERT INTO users (login_id, password, name, role) VALUES(:loginId, :password, :name, 2)";
+	
 
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
@@ -37,6 +39,15 @@ public class PgUserDao implements UserDao {
         
         List<User> resultList = jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<User>(User.class));
 		return resultList.isEmpty() ? null : resultList.get(0);
+	}
+	
+	public int register(String loginId, String password, String name) {
+		 String sql = SQL_INSERT;
+	        MapSqlParameterSource param = new MapSqlParameterSource();
+	        param.addValue("loginId", loginId);
+	        param.addValue("password", password);
+	        param.addValue("name", name);
+	        return jdbcTemplate.update(sql, param);
 	}
 	
 	

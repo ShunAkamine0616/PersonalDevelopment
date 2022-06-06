@@ -8,5 +8,5 @@ public interface UserService {
 
     public List<User> findAll();
     public User findByUserIdAndPass(String UserId, String pass);
-    
+    public int register(String loginId, String password, String name);
 }
