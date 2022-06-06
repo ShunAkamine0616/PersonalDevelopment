@@ -152,7 +152,7 @@ function keyDown(e) {
                 }
             }
         if (!checkTexts.length) { // 文字がなくなったら
-            var aud = new Audio('crrect_answer2.mp3');
+            var aud = new Audio('/audio/crrect_answer2.mp3');
             aud.play();
             createText(); // 次の文字を生成 
             target.textContent = ''; // ターゲット
@@ -161,7 +161,7 @@ function keyDown(e) {
         } 
     } else {
         missCount++;
-        var aud = new Audio('blip04.mp3');
+        var aud = new Audio('/audio/blip04.mp3');
         aud.play();
     }
 
