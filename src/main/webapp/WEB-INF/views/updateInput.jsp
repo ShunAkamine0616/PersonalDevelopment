@@ -14,7 +14,7 @@
 <body>
 	<div class="header">
 		<h1 class="site_logo">
-			<a href="menu.jsp">英単語タイピングシステム</a>
+			<a href="menu.jsp">英単語タイピングゲーム</a>
 		</h1>
 		<div class="user">
 			<p class="user_name">${user.name}さん、こんにちは</p>

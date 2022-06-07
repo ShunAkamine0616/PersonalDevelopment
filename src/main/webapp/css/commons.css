@@ -53,7 +53,7 @@ a.btn {
   text-align: center;
   font-size: 21px;
   font-weight: bold;
-  background-color: #87cefa;
+  background-color: #87fa94;
   border-radius: 10px;
   cursor: pointer;
   border: 0px;
@@ -81,7 +81,7 @@ table {
 }
 
 table th {
-  background:#68a9eb;
+  background:#68eb77;
 	font-weight: bold;
 	color:#fff;
 }
@@ -96,13 +96,13 @@ table tr:nth-child(odd){
 }
 
 .detail_btn {
-  background-color:#004a94;
+  background-color:#009407;
   display: block;       /* リンクをブロックレベル化して表示 */
   padding: 5px 10px 5px 10px;
 }
 
 .detail_btn:hover {
-  background-color:#417ebb;
+  background-color:#41bb55;
 }
 
 a {
@@ -123,13 +123,13 @@ a {
 
 .site_logo {
   text-align: left;
-  margin: 10px 100px 30px 100px;
+  margin: 10px 100px 20px 100px;
 }
 
 .logout_btn {
   border: none;
   border-radius: 5px;
-  background-color: #004a94;
+  background-color: #009414;
   padding: auto;
   line-height: 2;
   padding: 10px;
@@ -139,7 +139,7 @@ a {
 }
 
 .logout_btn:hover {
-  background-color:#417ebb;
+  background-color:#41bb72;
 }
 
 .logout_btn img {
@@ -170,7 +170,7 @@ hr {
   height: auto;
   border: none;
   border-radius: 5px;
-  background-color: #004a94;
+  background-color: #009423;
   padding: auto;
   line-height: 2;
   padding: 5px 10px 5px 10px;
@@ -180,7 +180,7 @@ hr {
 }
 
 .basic_btn:hover {
-  background-color:#417ebb;
+  background-color:#4bbb41;
 }
 
 .btn {
@@ -232,7 +232,7 @@ hr {
   font-size: 1.3em;
   border: none;
   background: none;
-  color: #3879D9;
+  color: #38d950;
   position: absolute;
   width: 2.5em;
   height: 2.5em;

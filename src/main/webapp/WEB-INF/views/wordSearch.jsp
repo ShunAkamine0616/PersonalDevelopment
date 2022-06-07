@@ -11,7 +11,7 @@
 <c:if test="${empty user}">
 	<meta http-equiv="Refresh" content="0;URL=index">
 </c:if>
-<title>メニュー</title>
+<title>単語検索</title>
 <link href="css/commons.css" rel="stylesheet">
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"

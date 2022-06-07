@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TOPページ</title>
+<title>タイトルページ</title>
 </head>
 <body>
-	<h1>英語タイピングゲームへようこそ</h1>
+	<h1>英単語タイピングゲームへようこそ</h1>
 
 	<form action="login">
 		<%-- 	<form:button value="login">ログイン</form:button> --%>
