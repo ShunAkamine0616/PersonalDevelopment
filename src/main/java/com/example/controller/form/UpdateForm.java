@@ -1,50 +1,23 @@
 package com.example.controller.form;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 public class UpdateForm {
 
-	@NotNull
-	private Integer productId;
 	@NotBlank
-    private String productName;
-	@NotNull
-    private Integer price;
-	@NotNull
-	private Integer categoryId;
-	private String description;
+	private String japanese;
+	@NotBlank
+    private String english;
 	
-	public Integer getProductId() {
-		return productId;
+	public String getJapanese() {
+		return japanese;
 	}
-	public void setProductId(Integer productId) {
-		this.productId = productId;
+	public void setJapanese(String japanese) {
+		this.japanese = japanese;
 	}
-	public String getProductName() {
-		return productName;
+	public String getEnglish() {
+		return english;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setEnglish(String english) {
+		this.english = english;
 	}
-	public Integer getPrice() {
-		return price;
-	}
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-	public Integer getCategoryId() {
-		return categoryId;
-	}
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-    
-    
-	
 }

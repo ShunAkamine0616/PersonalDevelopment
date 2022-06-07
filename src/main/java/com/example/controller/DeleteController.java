@@ -9,27 +9,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.service.ProductService;
+import com.example.service.WordService;
 
 @Controller
 public class DeleteController {
 	@Autowired
 	HttpSession session;
 	@Autowired
-	ProductService productService;
+	WordService wordService;
 	@Autowired
 	MessageSource messageSource;
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam("productId") String productId , Model model) {
-		int productIdInt = Integer.parseInt(productId);
-		if(productService.delete(productIdInt) == 0) {
+	public String delete(@RequestParam("id") String id , Model model) {
+		int idInt = Integer.parseInt(id);
+		if(wordService.delete(idInt) == 0) {
 			session.setAttribute("deleteErrMsg", "削除に失敗しました。");
 			return "detail";
 		} else {
-			session.setAttribute("successMsg", "削除に成功しました");
-			session.setAttribute("productList", productService.findAll("product_id")); 
-			return "menu";
+			model.addAttribute("successMsg", "削除に成功しました");
+			session.setAttribute("productList", wordService.findAll("id")); 
+			return "wordSearch";
 		}
 	}
 }

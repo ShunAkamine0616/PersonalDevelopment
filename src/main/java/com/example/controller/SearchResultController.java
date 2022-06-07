@@ -7,63 +7,69 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.entity.Product;
-import com.example.service.ProductService;
+import com.example.entity.Word;
+import com.example.service.WordService;
 
 import util.Utility;
 
 @Controller
 public class SearchResultController {
 	@Autowired
-	ProductService productService;
+	WordService wordService;
 	@Autowired
 	MessageSource messageSource;
 
+	@RequestMapping("/searchInput")
+	public String menu(Model model) {
+		return "wordSearch";
+	}
+	
 	@GetMapping("/search")
 	public String search(@RequestParam("keyword") String keyword, Model model) {
 
-		List<Product> productList = null;
+		List<Word> wordList = null;
 		System.out.println("keyword = " + keyword);
 		if (Utility.isNullOrEmpty(keyword)) {
-			productList = productService.findAll("product_id");
-			model.addAttribute("productList", productList);
-			if(productList.size() == 0) {
+			wordList = wordService.findAll("id");
+			model.addAttribute("wordList", wordList);
+			if(wordList.size() == 0) {
 				model.addAttribute("successMsg", "検索条件と十分に一致する結果が見つかりません");
 			} else {
 				//			model.removeAttribute("successMsg");
 			}
 		} else {
-			productList = productService.findByKeyword(keyword, "product_id");
+			wordList = wordService.findByKeyword(keyword, "id");
 			//		categoryList = cService.findByKeyword(keyword);
-			if(productList == null) {
+			if(wordList == null) {
 				model.addAttribute("successMsg", "検索条件と十分に一致する結果が見つかりません");
 			} else {
 				//			model.removeAttribute("successMsg");
 			}
-			model.addAttribute("productList", productList);
+			model.addAttribute("wordList", wordList);
 			//		model.setAttribute("categoryList", categoryList);
 		} 
-		return "menu";
+		return "wordSearch";
 	}
 
 	@GetMapping("/searchByKeyword")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, @RequestParam("sort") String sort, Model model) {
 
-		List<Product> productList = null;
+		List<Word> wordList = null;
 		System.out.println("keyword = " + keyword);
-		productList = productService.findByKeyword(keyword, sort);
+		wordList = wordService.findByKeyword(keyword, sort);
 		//		categoryList = cService.findByKeyword(keyword);
-		if(productList == null) {
+		if(wordList == null) {
 			model.addAttribute("successMsg", "検索条件と十分に一致する結果が見つかりません");
 		} else {
 			//			model.removeAttribute("successMsg");
 		}
-		model.addAttribute("productList", productList);
+		model.addAttribute("wordList", wordList);
 		//		model.setAttribute("categoryList", categoryList);
 
-		return "menu";
+		return "wordSearch";
 
 	}
 }

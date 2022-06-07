@@ -48,44 +48,28 @@
 				<fieldset class="label-130">
 					<div>
 						<label class="required"><fmt:message
-								key="form.lbl.productId" /></label>
-						<form:input type="text" path="productId" class="base-text"
-							value="${productId}" />
-						<span class="error"><form:errors path="productId"
+								key="form.lbl.japanese" /></label>
+						<form:input type="text" path="japanese" class="base-text"
+							value="${japanese}" />
+						<span class="error"><form:errors path="japanese"
 								cssStyle="color: red" /> </span>
 					</div>
 					<div>
 						<label class="required"><fmt:message
-								key="form.lbl.productName" /></label>
-						<form:input type="text" path="productName" class="base-text"
-							value="${productName}" />
-						<span class="error"><form:errors path="productName"
-								cssStyle="color: red" /></span>
-					</div>
-					<div>
-						<label class="required"><fmt:message key="form.lbl.price" /></label>
-						<form:input type="text" path="price" class="base-text"
-							value="${price}" />
-						<span class="error"><form:errors path="price"
+								key="form.lbl.english" /></label>
+						<form:input type="text" path="english" class="base-text"
+							value="${english}" />
+						<span class="error"><form:errors path="english"
 								cssStyle="color: red" /></span>
 					</div>
 					<div class="select_block">
 						<label class="required"><fmt:message
-								key="form.lbl.category" /></label>
-						<form:select path="categoryId" class="base-text">
-							<form:options items="${categoryList}" itemLabel="categoryName"
-								itemValue="categoryId" />
-						</form:select>
-					</div>
-					<div>
-						<label><fmt:message key="form.lbl.description" /></label>
-						<form:textarea path="description" class="base-text"></form:textarea>
-					</div>
-					<div>
-						<label>画像</label> <input type="file" name="imagePath"/> <span
-							class="error"><c:if test="${not empty imageErrMsg}">
-								<span>${fn:escapeXml(imageErrMsg)}</span>
-							</c:if></span>
+								key="form.lbl.difficulty"/></label>
+						<select name="difficulty">
+							<option value="1">レベル1</option>
+							<option value="2">レベル2</option>
+							<option value="3">レベル3</option>
+						</select>
 					</div>
 				</fieldset>
 				<div class="btns">

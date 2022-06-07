@@ -53,10 +53,6 @@ public class LoginController {
 			model.addAttribute("loginErrMsg", errMsg);
 			return "index";
 		} else {
-//			List<Product> productList = productService.findAll("product_id");
-//			List<Category> categoryList = categoryService.find();
-//			session.setAttribute("productList", productList);
-//			session.setAttribute("categoryList", categoryList);
 			session.setAttribute("user", user);
 			return "menu";
 		}

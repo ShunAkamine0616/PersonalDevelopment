@@ -14,7 +14,7 @@
 <body>
 	<div class="header">
 		<h1 class="site_logo">
-			<a href="menu.jsp">商品管理システム</a>
+			<a href="menu.jsp">英単語タイピングシステム</a>
 		</h1>
 		<div class="user">
 			<p class="user_name">${user.name}さん、こんにちは</p>
@@ -39,42 +39,28 @@
 			<form:form action="update" method="get" modelAttribute="update">
 				<fieldset class="label-130">
 					<div>
-						<label><fmt:message key="form.lbl.productId" /></label>
-						<form:input type="text" path="productId" class="base-text"
-							value="${product.productId}" />
-						<span class="error"><form:errors path="productId"
+						<label class="required"><fmt:message
+								key="form.lbl.japanese" /></label>
+						<form:input type="text" path="japanese" class="base-text"
+							value="${japanese}" />
+						<span class="error"><form:errors path="japanese"
+								cssStyle="color: red" /> </span>
+					</div>
+					<div>
+						<label class="required"><fmt:message
+								key="form.lbl.english" /></label>
+						<form:input type="text" path="english" class="base-text"
+							value="${english}" />
+						<span class="error"><form:errors path="english"
 								cssStyle="color: red" /></span>
 					</div>
-					<div>
-						<label><fmt:message key="form.lbl.productName" /></label>
-						<form:input type="text" path="productName" class="base-text"
-							value="${product.productName}" />
-						<span class="error"> <form:errors path="productName"
-								cssStyle="color: red" />
-						</span>
-					</div>
-					<div>
-						<label><fmt:message key="form.lbl.price" /></label>
-						<form:input type="text" path="price" class="base-text"
-							value="${product.price}" />
-						<span class="error"><form:errors path="price" cssStyle="color: red" />
-						</span>
-					</div>
-					<div>
-						<label><fmt:message key="form.lbl.category" /></label>
-						<form:select path="categoryId" class="base-text">
-							<form:options items="${categoryList}" itemLabel="categoryName"
-								itemValue="categoryId" />
-						</form:select>
-					</div>
-					<div>
-						<label><fmt:message key="form.lbl.description" /></label>
-						<form:textarea path="description" class="base-text"
-							value="${product.description}"></form:textarea>
-					</div>
-					<div>
-						<label>画像</label> <form:input type="file" path="imagePath"/> <span
-							class="error">エラーメッセージ</span>
+					<div class="select_block">
+						<label class="required"><fmt:message
+								key="form.lbl.difficulty" /></label> <select name="difficulty">
+							<option value="1">レベル1</option>
+							<option value="2">レベル2</option>
+							<option value="3">レベル3</option>
+						</select>
 					</div>
 				</fieldset>
 				<div class="btns">

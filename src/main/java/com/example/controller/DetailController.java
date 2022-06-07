@@ -8,21 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.entity.Product;
-import com.example.service.ProductService;
+import com.example.entity.Word;
+import com.example.service.WordService;
 
 @Controller
 public class DetailController {
 	@Autowired
 	HttpSession session;
 	@Autowired
-	ProductService productService;
+	WordService wordService;
 	
 	@GetMapping("/detail")
-	public String search(@RequestParam("product_id") Integer productId, Model model) {
-		Product product = productService.findById(productId);
-		session.setAttribute("product", product);
-		System.out.println("ccccccc");
+	public String search(@RequestParam("id") Integer id, Model model) {
+		Word word = wordService.findById(id);
+		session.setAttribute("word", word);
 		return "detail";
 	}
 }

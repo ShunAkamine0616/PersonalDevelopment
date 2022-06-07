@@ -32,44 +32,30 @@
 
 	<div class="update">
 		<div class="form_body">
-			<div class="img_block">
-				<img src="images/マッキー.png" class="product_img"><br>
-			</div>
-			<form action="delete?productId=${product.getProductId()}"
+			<form action="delete?id=${word.getId()}"
 				method="get">
-				<fieldset class="label-130 product_block">
+				<fieldset class="label-130 word_block">
 					<p class="error">
 						<c:if test="${not empty deleteErrMsg}">
 							<span>${fn:escapeXml(deleteErrMsg)}</span>
 						</c:if>
 					</p>
 					<div>
-						<label><fmt:message
-								key="form.lbl.productId" /></label> <input type="text" name="productId"
-							value="${product.productId}" readonly class="base-text">
+						<label>ID</label> <input type="text" name="id"
+							value="${word.id}" readonly class="base-text">
+					</div>
+					<div>
+						<label>日本語</label> <input type="text" name="japanese"
+							value="${word.japanese}" readonly class="base-text">
+					</div>
+					<div>
+						<label>英語</label> <input type="text" name="english"
+							value="${word.english}" readonly class="base-text">
 					</div>
 					<div>
 						<label><fmt:message
-								key="form.lbl.productName" /></label> <input type="text" name="productName"
-							value="${product.name}" readonly class="base-text">
-					</div>
-					<div>
-						<label><fmt:message
-								key="form.lbl.price" /></label> <input type="text" name="price"
-							value="${product.price}" readonly class="base-text">
-					</div>
-					<div>
-						<label><fmt:message
-								key="form.lbl.category" /></label> <input type="text" name="category"
-							value="${product.category.categoryName}" readonly class="base-text">
-					</div>
-					<div>
-						<label><fmt:message
-								key="form.lbl.description" /></label>
-						<textarea name="description" readonly class="base-text"
-							style="background-color: rgb(209, 209, 209);">
-            ${product.getDescription()}
-            </textarea>
+								key="form.lbl.difficulty" /></label> <input type="text" name="difficuluty"
+							value="${word.difficulty}" readonly class="base-text">
 					</div>
 				</fieldset>
 				<div>

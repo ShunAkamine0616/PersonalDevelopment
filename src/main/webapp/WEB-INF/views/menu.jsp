@@ -37,9 +37,9 @@
 
 	<c:if test="${user.role == 1}">
 		<div class="btn">
-			<form action="InsertController" method="get">
-				<button class="basic_btn regist" name="insert">
-					<fmt:message key="form.lbl.signup" />
+			<form action="searchInput" method="get">
+				<button class="basic_btn regist" name="wordSearch">
+					単語検索
 				</button>
 			</form>
 		</div>
