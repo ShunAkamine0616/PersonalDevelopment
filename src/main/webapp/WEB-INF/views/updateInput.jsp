@@ -14,13 +14,13 @@
 <body>
 	<div class="header">
 		<h1 class="site_logo">
-			<a href="menu.jsp">英単語タイピングゲーム</a>
+			<a href="menu">英単語タイピングゲーム</a>
 		</h1>
 		<div class="user">
 			<p class="user_name">${user.name}さん、こんにちは</p>
 			<form class="logout_form" action="logout" method="get">
 				<button class="logout_btn" type="submit">
-					<img src="images/ドアアイコン.png">ログアウト
+					<img src="images/ログアウト.png">ログアウト
 				</button>
 			</form>
 		</div>

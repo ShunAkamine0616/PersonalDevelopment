@@ -22,13 +22,13 @@
 
 		<div class="header">
 			<h1 class="site_logo">
-				<a href="menu.jsp"><fmt:message key="site_logo" /></a>
+				<a href="menu"><fmt:message key="site_logo" /></a>
 			</h1>
 			<div class="user">
 				<p class="user_name">${user.name}さん、こんにちは</p>
 				<form class="logout_form" action="logout" method="get">
 					<button class="logout_btn" type="submit">
-						<img src="images/ドアアイコン.png">
+						<img src="images/ログアウト.png">
 						<fmt:message key="form.lbl.logout" />
 					</button>
 				</form>
@@ -54,8 +54,9 @@
 				id="keyword" value="${keyword}"> <input type="submit"
 				value="&#xf002">
 		</form>
-
-		<table>
+	<input type="button" onclick="location.href='back'" value="タイピング画面へ戻る"
+						class="cancel_btn">
+		<table border="1">
 			<div class="caption">
 				<p>検索結果：${wordList.size()}件</p>
 			</div>

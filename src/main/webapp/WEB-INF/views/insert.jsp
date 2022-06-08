@@ -16,13 +16,13 @@
 
 	<div class="header">
 		<h1 class="site_logo">
-			<a href="menu.jsp"><fmt:message key="site_logo" /></a>
+			<a href="menu"><fmt:message key="site_logo" /></a>
 		</h1>
 		<div class="user">
 			<p class="user_name">${user.name}さん、こんにちは</p>
 			<form class="logout_form" action="logout" method="get">
 				<button class="logout_btn" type="submit">
-					<img src="images/ドアアイコン.png">ログアウト
+					<img src="images/ログアウト.png">ログアウト
 				</button>
 			</form>
 		</div>

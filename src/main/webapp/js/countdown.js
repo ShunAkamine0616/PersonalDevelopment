@@ -1,8 +1,10 @@
 // タイピング
 // let words = ['red', 'blue', 'green', 'yellow', 'black', 'white', 'pink'];
-var words = { 赤:"red", りんご: "apple", みかん: "orange", 空っぽ: "empty", 
-"個性、性格":"personality", "現れる(e)": "emerge", "...にもかかわらず(d)":"despite", "（...に対する）考え方(a)":"attitude",
-を関与させる:"involve", 手に入る:"available"}
+var words = {};
+fetch("getWords")
+   .then(response => response.json())
+  .then(data => words = data);
+
 var checkTexts = []; // １文字ずつ格納するための配列
 let english = ''  // 現在入力中の文字(英語)
 let japanese = '' // 日本語
@@ -15,7 +17,8 @@ var wordsArray = []; // 連想配列の値を入れるための配列
 
 const jp = document.getElementById('japanese');
 const target = document.getElementById('target');
-
+const loginId = document.getElementById('loginId').value;
+console.log('loginId = ' + loginId)
 let missCount = 0;
 const countEl = document.getElementById('count');
 
@@ -55,6 +58,9 @@ const coutdownTimer = (tickCallBack, endCallBack
                 countEl.textContent = 'タイプミス' + missCount + '個';
                 jp.textContent = '';
                 endCallBack(); // 終了通知
+      			console.log("loginId = " + loginId)
+      			console.log("score-miss = " + score-missCount)
+                fetch('socreInsert?loginId='+loginId+'&score='+(score-missCount));
             } else {
                 tickCallBack(calcTime(nowSec)); // 残り時間通知
             }
@@ -82,7 +88,7 @@ window.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
         score = 0;
         button.disabled = true;
-        coutdownTimer(tickFunc, endFunc, 60);
+        coutdownTimer(tickFunc, endFunc, 5);
     });
 });
 

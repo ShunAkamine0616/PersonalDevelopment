@@ -105,4 +105,10 @@ public class LoginController {
 		System.out.println("aaaaaaaa");
 		return "title";
 	}
+	
+	@RequestMapping("/menu")
+	public String menu(Model model) {
+		System.out.println("aaaaaaaa");
+		return "menu";
+	}
 }

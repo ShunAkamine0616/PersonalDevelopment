@@ -1,21 +1,16 @@
 package com.example.entity;
 
 public class Score {
-	private Integer id;
-    private String userId;
+//	private Integer id;
+//    private String userId;
+	private String loginId;
     private Integer score;
-    
-	public Integer getId() {
-		return id;
+ 
+	public String getLoginId() {
+		return loginId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 	public Integer getScore() {
 		return score;

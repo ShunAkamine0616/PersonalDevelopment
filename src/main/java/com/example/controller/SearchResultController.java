@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entity.Score;
 import com.example.entity.Word;
+import com.example.service.ScoreService;
 import com.example.service.WordService;
 
 import util.Utility;
@@ -19,6 +21,8 @@ import util.Utility;
 public class SearchResultController {
 	@Autowired
 	WordService wordService;
+	@Autowired
+	ScoreService scoreService;
 	@Autowired
 	MessageSource messageSource;
 
@@ -70,6 +74,40 @@ public class SearchResultController {
 		//		model.setAttribute("categoryList", categoryList);
 
 		return "wordSearch";
+
+	}
+	
+	@RequestMapping("/score")
+	public String score(Model model) {
+		List<Score> scoreList = null;
+		scoreList = scoreService.findAll("score DESC");
+		//		categoryList = cService.findByKeyword(keyword);
+		if(scoreList == null) {
+			model.addAttribute("successMsg", "スコアが一件も見つかりません");
+		} else {
+			//			model.removeAttribute("successMsg");
+		}
+		model.addAttribute("scoreList", scoreList);
+		//		model.setAttribute("categoryList", categoryList);
+
+		return "score";
+	}
+	
+	@GetMapping("/scoreView")
+	public String scoreView(Model model) {
+
+		List<Score> scoreList = null;
+		scoreList = scoreService.findAll("score DESC");
+		//		categoryList = cService.findByKeyword(keyword);
+		if(scoreList == null) {
+			model.addAttribute("successMsg", "スコアが一件も見つかりません");
+		} else {
+			//			model.removeAttribute("successMsg");
+		}
+		model.addAttribute("scoreList", scoreList);
+		//		model.setAttribute("categoryList", categoryList);
+
+		return "score";
 
 	}
 }

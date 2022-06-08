@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="header">
-    <h1 class="site_logo">商品管理システム</h1>
+    <h1 class="site_logo">英単語タイピングゲーム</h1>
   </div>
   <div class="center">
     <p>

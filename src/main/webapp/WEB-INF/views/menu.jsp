@@ -24,34 +24,36 @@
 </head>
 <body>
 
+	<p class="user_name">${user.name}さん、こんにちは</p>
+	<input id="loginId" type="hidden" name="userid" value="${user.loginId}">
 	<div class="user">
-		<p class="user_name">${user.name}さん、こんにちは</p>
 		<form class="logout_form" action="logout" method="get">
 			<button class="logout_btn" type="submit">
-				<img src="images/ドアアイコン.png">
+				<img src="images/ログアウト.png">
 				<fmt:message key="form.lbl.logout" />
 			</button>
 		</form>
-	</div>
 
 
-	<c:if test="${user.role == 1}">
+
 		<div class="btn">
 			<form action="searchInput" method="get">
-				<button class="basic_btn regist" name="wordSearch">
-					単語検索
-				</button>
+				<button class="basic_btn regist" name="wordSearch">単語検索</button>
 			</form>
 		</div>
-	</c:if>
-	
-<!-- 	ここから追加 -->
+		<div class="btn">
+			<form action="scoreView" method="get">
+				<button class="basic_btn regist" name="scoreSearch">スコア表</button>
+			</form>
+		</div>
+	</div>
+	<!-- 	ここから追加 -->
 	<div id="content">
 		<p id="timer"></p>
 
 		<p>
 			<button type="button" id="timerstart" name="timerstart"
-				class="btn btn-primary">スタート</button>
+				class="btn btn-success">スタート</button>
 		</p>
 		<p id="japanese"></p>
 		<p id="target"></p>
