@@ -27,7 +27,7 @@ public class PgScoreDao implements ScoreDao {
 		if(!Utility.isNullOrEmpty(sort)) {
 			column = sort;
 		}
-		String SQL_SELECT_ALL = "SELECT s.login_id login_id, score FROM scores s JOIN users u ON s.login_id = u.login_id  ORDER BY " + column;
+		String SQL_SELECT_ALL = "SELECT RANK() OVER(ORDER BY score DESC) AS lank, login_id, score FROM (SELECT s.login_id, score FROM scores s JOIN users u ON s.login_id = u.login_id) a";
 	       String sql = SQL_SELECT_ALL;
 	        List<Score> resultList = jdbcTemplate2.query(sql, new BeanPropertyRowMapper<Score>(Score.class));
 

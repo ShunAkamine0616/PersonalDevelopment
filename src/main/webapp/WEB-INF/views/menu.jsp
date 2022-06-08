@@ -23,8 +23,9 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
-	<p class="user_name">${user.name}さん、こんにちは</p>
+	<div class="ribbon3">
+		<p class="user_name">${user.name}さん、こんにちは</p>
+	</div>
 	<input id="loginId" type="hidden" name="userid" value="${user.loginId}">
 	<div class="user">
 		<form class="logout_form" action="logout" method="get">
@@ -38,12 +39,12 @@
 
 		<div class="btn">
 			<form action="searchInput" method="get">
-				<button class="basic_btn regist" name="wordSearch">単語検索</button>
+				<button class="btn-gradient-3d-simple" name="wordSearch">単語検索</button>
 			</form>
 		</div>
 		<div class="btn">
 			<form action="scoreView" method="get">
-				<button class="basic_btn regist" name="scoreSearch">スコア表</button>
+				<button class="btn-circle-3d" name="scoreSearch">スコア表</button>
 			</form>
 		</div>
 	</div>
@@ -53,7 +54,7 @@
 
 		<p>
 			<button type="button" id="timerstart" name="timerstart"
-				class="btn btn-success">スタート</button>
+				class="btn-sf-like">スタート</button>
 		</p>
 		<p id="japanese"></p>
 		<p id="target"></p>

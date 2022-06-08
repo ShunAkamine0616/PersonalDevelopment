@@ -69,6 +69,7 @@
 			<!-- 			</div> -->
 			<thead>
 				<tr>
+					<th>ランキング</th>
 					<th>ユーザーID</th>
 					<th>スコア</th>
 				</tr>
@@ -76,6 +77,7 @@
 			<tbody>
 				<c:forEach var="score" items="${scoreList}">
 					<tr>
+						<th>${score.lank}</th>
 						<td>${score.loginId}</td>
 						<td>${score.score}</td>
 					</tr>

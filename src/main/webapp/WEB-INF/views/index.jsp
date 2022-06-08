@@ -44,7 +44,7 @@
 					</div>
 				</div>
 			</fieldset>
-			<form:button name="login">
+			<form:button name="login" class="btn-square-shadow">
 				<fmt:message key="form.lbl.login" />
 			</form:button>
 			<%-- 			<form:button name="login"><fmt:message key="form.lbl.signup"/></form:button> --%>
