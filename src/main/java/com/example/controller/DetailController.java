@@ -18,7 +18,7 @@ public class DetailController {
 	@Autowired
 	WordService wordService;
 	
-	@GetMapping("/detail")
+	@GetMapping("detail")
 	public String search(@RequestParam("id") Integer id, Model model) {
 		Word word = wordService.findById(id);
 		session.setAttribute("word", word);

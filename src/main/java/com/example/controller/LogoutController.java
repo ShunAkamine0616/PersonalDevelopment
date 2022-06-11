@@ -14,7 +14,7 @@ import com.example.controller.form.LoginForm;
 public class LogoutController {
 	@Autowired
 	HttpSession session;
-	@RequestMapping("/logout")
+	@RequestMapping("logout")
 	public String index(@ModelAttribute("index") LoginForm loginform, Model model) {
 		session.invalidate();
 		return "logout";

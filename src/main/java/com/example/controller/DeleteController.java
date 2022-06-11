@@ -20,7 +20,7 @@ public class DeleteController {
 	@Autowired
 	MessageSource messageSource;
 	
-	@GetMapping("/delete")
+	@GetMapping("delete")
 	public String delete(@RequestParam("id") String id , Model model) {
 		int idInt = Integer.parseInt(id);
 		if(wordService.delete(idInt) == 0) {

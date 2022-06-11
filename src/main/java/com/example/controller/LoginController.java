@@ -34,13 +34,13 @@ public class LoginController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping("/index")
+	@RequestMapping("index")
 	public String index(@ModelAttribute("index") LoginForm loginform, Model model) {
 		System.out.println("aaaaaaaa");
 		return "index";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String result(@Validated @ModelAttribute("index") LoginForm loginform, BindingResult bindingResult, Model model) {
 		// 入力チェック
 		if (bindingResult.hasErrors()) {
@@ -104,13 +104,13 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping("/title")
+	@RequestMapping("title")
 	public String title(Model model) {
 		System.out.println("aaaaaaaa");
 		return "title";
 	}
 	
-	@RequestMapping("/menu")
+	@RequestMapping("menu")
 	public String menu(Model model) {
 		System.out.println("aaaaaaaa");
 		return "menu";

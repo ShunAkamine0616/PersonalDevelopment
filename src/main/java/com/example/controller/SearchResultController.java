@@ -26,12 +26,12 @@ public class SearchResultController {
 	@Autowired
 	MessageSource messageSource;
 
-	@RequestMapping("/searchInput")
+	@RequestMapping("searchInput")
 	public String menu(Model model) {
 		return "wordSearch";
 	}
 	
-	@GetMapping("/search")
+	@GetMapping("search")
 	public String search(@RequestParam("keyword") String keyword, Model model) {
 
 		List<Word> wordList = null;
@@ -58,7 +58,7 @@ public class SearchResultController {
 		return "wordSearch";
 	}
 
-	@GetMapping("/searchByKeyword")
+	@GetMapping("searchByKeyword")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, @RequestParam("sort") String sort, Model model) {
 		List<Word> wordList = null;
 		System.out.println("keyword = " + keyword);
@@ -76,7 +76,7 @@ public class SearchResultController {
 
 	}
 	
-	@RequestMapping("/score")
+	@RequestMapping("score")
 	public String score(@RequestParam("level") Integer level, Model model) {
 		List<Score> scoreList = null;
 		scoreList = scoreService.findAll(level);
@@ -92,7 +92,7 @@ public class SearchResultController {
 		return "score";
 	}
 	
-	@GetMapping("/scoreView")
+	@GetMapping("scoreView")
 	public String scoreView(Model model) {
 
 //		List<Score> scoreList = null;
