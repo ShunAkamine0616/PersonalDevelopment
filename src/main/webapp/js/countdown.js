@@ -33,6 +33,7 @@ var level = 0;
 
 const jp = document.getElementById('japanese');
 const target = document.getElementById('target');
+const explanation = document.getElementById('explanation');
 const loginId = document.getElementById('loginId').value;
 console.log('loginId = ' + loginId)
 let missCount = 0;
@@ -71,6 +72,7 @@ const coutdownTimer = (tickCallBack, endCallBack
                 buttons[0].hidden = false;
                 buttons[1].hidden = false;
                 buttons[2].hidden = false;
+                explanation.hidden = false;
                 end = true; 
                 target.textContent = 'スコア: ' + (score - missCount); // 画面にクリアと表示  
                 countEl.textContent = 'タイプミス' + missCount + '個';
@@ -119,6 +121,7 @@ window.addEventListener("DOMContentLoaded", () => {
 var buttons = document.getElementsByClassName('timerstart');
 for(let i = 0; i < buttons.length; i++) {
 	buttons[i].addEventListener('click', event => {
+		explanation.hidden = true;
 		console.log("event.target.id = " + event.target.id)
 		fetch("getWords?level="+event.target.id)
 		   .then(response => response.json())
@@ -202,8 +205,14 @@ function keyDown(e) {
             display = 0;
             jp.textContent = japanese; // 日本語を表示
         } 
-    } else {
+    } else if(isUpperCase(e.key)) {
+		console.log("e.key" + e.key)
+	    missCount++;
+	    var aud = new Audio('/audio/blip04.mp3');
+	    aud.play();
+	} else {
 		if(e.shiftKey !== true) {
+			console.log("e.key" + e.key)
 	        missCount++;
 	        var aud = new Audio('/audio/blip04.mp3');
 	        aud.play();
@@ -216,4 +225,8 @@ function sleep(waitMsec) {
  
   // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
   while (new Date() - startMsec < waitMsec);
+}
+
+const isUpperCase = str => {
+  return str === str.toUpperCase() ? true : false
 }
