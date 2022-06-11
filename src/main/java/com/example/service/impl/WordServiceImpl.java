@@ -18,6 +18,9 @@ public class WordServiceImpl implements WordService {
 	public List<Word> findByKeyword(String keyword, String sort) {
 		return wordDao.findByKeyword(keyword, sort);
 	}
+	public List<Word> findByLevel(Integer level) {
+		return wordDao.findByLevel(level);
+	}
 	public Word findById(Integer id) {
 		return wordDao.findById(id);
 	}

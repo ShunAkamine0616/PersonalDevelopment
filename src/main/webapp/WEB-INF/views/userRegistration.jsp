@@ -49,7 +49,7 @@
 					<div>
 						<label class="required"><fmt:message
 								key="form.lbl.password" /></label>
-						<form:input type="text" path="password" class="base-text"
+						<form:input type="password" path="password" class="base-text"
 							value="${password}" />
 						<span class="error"><form:errors path="password"
 								cssStyle="color: red" /></span>

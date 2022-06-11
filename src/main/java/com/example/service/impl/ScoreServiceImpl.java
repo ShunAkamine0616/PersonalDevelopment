@@ -13,10 +13,10 @@ import com.example.service.ScoreService;
 public class ScoreServiceImpl implements ScoreService {
 	@Autowired
 	private ScoreDao scoreDao;
-	public List<Score> findAll(String sort) {
-		return scoreDao.findAll(sort);
+	public List<Score> findAll(Integer level) {
+		return scoreDao.findAll(level);
 	}
-	public int insert(String loginId, Integer score) {
-		return scoreDao.insert(loginId, score);
+	public int insert(String loginId, Integer score, Integer level) {
+		return scoreDao.insert(loginId, score, level);
 	}
 }

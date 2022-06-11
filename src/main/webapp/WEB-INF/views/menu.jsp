@@ -50,15 +50,24 @@
 	</div>
 	<!-- 	ここから追加 -->
 	<div id="content">
+	<div class="user"></div>
 		<p id="timer"></p>
-
-		<p>
-			<button type="button" id="timerstart" name="timerstart"
-				class="btn-sf-like">スタート</button>
-		</p>
 		<p id="japanese"></p>
+		<hr>
 		<p id="target"></p>
 		<p id="count"></p>
+		<p>
+			<button type="button" id="1" name="timerstart"
+				class="timerstart">レベル１</button>
+		</p>
+		<p>
+			<button type="button" id="2" name="timerstart"
+				class="timerstart">レベル２</button>
+		</p>
+		<p>
+			<button type="button" id="3" name="timerstart"
+				class="timerstart">レベル３</button>
+		</p>
 	</div>
 	<script src="/js/countdown.js"></script>
 </body>

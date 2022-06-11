@@ -33,19 +33,20 @@ public class GetWordsController {
 //	}
 	
 	@GetMapping("/getWords")
-	public Map<String,String> search(Model model) {
+	public List<Word> search(@RequestParam("level") String level, Model model) {
 		Map<String, String> map = new HashMap<>();
 		List<Word> wordList = null;
-		wordList = wordService.findAll("id");
+		wordList = wordService.findByLevel(Integer.parseInt(level));
 		for(Word w: wordList) {
 			map.put(w.getJapanese(), w.getEnglish());
 		}
-		return map;
+		return wordList;
 	}
 	
 	@GetMapping("/socreInsert")
-	public int scoreInsert(@RequestParam("loginId") String loginId, @RequestParam("score") String score,Model model) {
+	public int scoreInsert(@RequestParam("loginId") String loginId, @RequestParam("score") String score,@RequestParam("level") String level,Model model) {
 		Integer scoreInt = Integer.parseInt(score);
-		return scoreService.insert(loginId, scoreInt);
+		Integer levelInt = Integer.parseInt(level);
+		return scoreService.insert(loginId, scoreInt, levelInt);
 	}
 }

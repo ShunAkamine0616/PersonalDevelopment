@@ -6,7 +6,8 @@ public class Score {
 	private Integer lank;
 	private String loginId;
     private Integer score;
- 
+    private Integer difficulty;
+	
 	
 	public Integer getLank() {
 		return lank;
@@ -25,5 +26,11 @@ public class Score {
 	}
 	public void setScore(Integer score) {
 		this.score = score;
+	}
+	public Integer getDifficulty() {
+		return difficulty;
+	}
+	public void setDifficulty(Integer difficulty) {
+		this.difficulty = difficulty;
 	}
 }

@@ -85,6 +85,10 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			return "userRegistration";
 		}
+		if(userService.findByUserId(registerform.getLoginId()) != null) {
+			model.addAttribute("registerErrMsg", "そのログインIDは既に存在します。");
+			return "userRegistration";
+		}
 		userService.register(registerform.getLoginId(), registerform.getPassword(), registerform.getName());
 		User user =userService.findByUserIdAndPass(registerform.getLoginId(), registerform.getPassword());
 		

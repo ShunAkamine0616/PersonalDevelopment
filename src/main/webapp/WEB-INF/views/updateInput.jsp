@@ -42,7 +42,7 @@
 						<label class="required"><fmt:message
 								key="form.lbl.japanese" /></label>
 						<form:input type="text" path="japanese" class="base-text"
-							value="${japanese}" />
+							value="${word.japanese}" />
 						<span class="error"><form:errors path="japanese"
 								cssStyle="color: red" /> </span>
 					</div>
@@ -50,16 +50,16 @@
 						<label class="required"><fmt:message
 								key="form.lbl.english" /></label>
 						<form:input type="text" path="english" class="base-text"
-							value="${english}" />
+							value="${word.english}" />
 						<span class="error"><form:errors path="english"
 								cssStyle="color: red" /></span>
 					</div>
 					<div class="select_block">
 						<label class="required"><fmt:message
 								key="form.lbl.difficulty" /></label> <select name="difficulty">
-							<option value="1">レベル1</option>
-							<option value="2">レベル2</option>
-							<option value="3">レベル3</option>
+							<option value="1" <c:if test="${word.difficulty == 1}">selected</c:if>>レベル1</option>
+							<option value="2" <c:if test="${word.difficulty == 2}">selected</c:if>>レベル2</option>
+							<option value="3" <c:if test="${word.difficulty == 3}">selected</c:if>>レベル3</option>
 						</select>
 					</div>
 				</fieldset>

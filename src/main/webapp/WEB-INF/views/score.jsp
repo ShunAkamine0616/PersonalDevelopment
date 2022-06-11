@@ -48,6 +48,24 @@
 		<%-- 		</form> --%>
 		<input type="button" onclick="location.href='back'" value="タイピング画面へ戻る"
 			class="cancel_btn">
+		<div class="btn">
+			<form action="score" method="get">
+				<input type="hidden" name="level" value="1">
+				<button class="btn-gradient-3d-simple">レベル1のスコア</button>
+			</form>
+		</div>
+		<div class="btn">
+			<form action="score" method="get">
+			<input type="hidden" name="level" value="2">
+				<button class="btn-gradient-3d-simple">レベル2のスコア</button>
+			</form>
+		</div>
+		<div class="btn">
+			<form action="score" method="get">
+			<input type="hidden" name="level" value="3">
+				<button class="btn-gradient-3d-simple">レベル3のスコア</button>
+			</form>
+		</div>
 		<table border="1">
 			<div class="caption">
 				<p>スコア表：${scoreList.size()}件</p>

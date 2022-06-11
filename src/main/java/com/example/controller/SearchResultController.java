@@ -60,7 +60,6 @@ public class SearchResultController {
 
 	@GetMapping("/searchByKeyword")
 	public String searchByKeyword(@RequestParam("keyword") String keyword, @RequestParam("sort") String sort, Model model) {
-
 		List<Word> wordList = null;
 		System.out.println("keyword = " + keyword);
 		wordList = wordService.findByKeyword(keyword, sort);
@@ -78,9 +77,9 @@ public class SearchResultController {
 	}
 	
 	@RequestMapping("/score")
-	public String score(Model model) {
+	public String score(@RequestParam("level") Integer level, Model model) {
 		List<Score> scoreList = null;
-		scoreList = scoreService.findAll("score DESC");
+		scoreList = scoreService.findAll(level);
 		//		categoryList = cService.findByKeyword(keyword);
 		if(scoreList == null) {
 			model.addAttribute("successMsg", "スコアが一件も見つかりません");
@@ -96,15 +95,15 @@ public class SearchResultController {
 	@GetMapping("/scoreView")
 	public String scoreView(Model model) {
 
-		List<Score> scoreList = null;
-		scoreList = scoreService.findAll("score DESC");
-		//		categoryList = cService.findByKeyword(keyword);
-		if(scoreList == null) {
-			model.addAttribute("successMsg", "スコアが一件も見つかりません");
-		} else {
-			//			model.removeAttribute("successMsg");
-		}
-		model.addAttribute("scoreList", scoreList);
+//		List<Score> scoreList = null;
+//		scoreList = scoreService.findAll("score DESC");
+//		//		categoryList = cService.findByKeyword(keyword);
+//		if(scoreList == null) {
+//			model.addAttribute("successMsg", "スコアが一件も見つかりません");
+//		} else {
+//			//			model.removeAttribute("successMsg");
+//		}
+//		model.addAttribute("scoreList", scoreList);
 		//		model.setAttribute("categoryList", categoryList);
 
 		return "score";

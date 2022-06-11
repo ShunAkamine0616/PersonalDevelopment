@@ -46,6 +46,17 @@ public class PgWordDao implements WordDao{
         return resultList.isEmpty() ? null : resultList;
 	}
 	
+	public List<Word> findByLevel(Integer level) {
+		String SQL_SELECT_SEARCH_WHERE_KEYWORD = "SELECT * FROM words WHERE difficulty = :level";
+		String sql = SQL_SELECT_SEARCH_WHERE_KEYWORD;
+
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        param.addValue("level", level);
+        
+        List<Word> resultList = jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<Word>(Word.class));
+        return resultList.isEmpty() ? null : resultList;
+	}
+
 	public Word findById(Integer id) {
 		String SQL_SELECT_SEARCH_WHERE_ID = "SELECT * FROM words WHERE id = :id";
 		String sql = SQL_SELECT_SEARCH_WHERE_ID;

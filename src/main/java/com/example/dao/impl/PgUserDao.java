@@ -16,6 +16,7 @@ import com.example.entity.User;
 public class PgUserDao implements UserDao {
 	private static final String SQL_SELECT_ALL = "SELECT * FROM users ORDER BY login_id";
 	private static final String SQL_SELECT_WHERE_USER_ID_AND_PASS = "SELECT * FROM users WHERE login_id = :login_id and password = :password";
+	private static final String SQL_SELECT_WHERE_USER_ID = "SELECT * FROM users WHERE login_id = :login_id";
 	private static final String SQL_INSERT = "INSERT INTO users (login_id, password, name, role) VALUES(:loginId, :password, :name, 2)";
 	
 
@@ -31,6 +32,15 @@ public class PgUserDao implements UserDao {
 		return resultList.isEmpty() ? null : resultList;
 	}
 
+	public User findByUserId(String UserId) {
+		String sql = SQL_SELECT_WHERE_USER_ID;
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("login_id", UserId);
+        
+        List<User> resultList = jdbcTemplate.query(sql, param, new BeanPropertyRowMapper<User>(User.class));
+		return resultList.isEmpty() ? null : resultList.get(0);
+	}
+	
 	public User findByUserIdAndPass(String UserId, String pass) {
 		String sql = SQL_SELECT_WHERE_USER_ID_AND_PASS;
 		MapSqlParameterSource param = new MapSqlParameterSource();

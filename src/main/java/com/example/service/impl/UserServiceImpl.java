@@ -17,6 +17,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAll();
 	}
 
+	public User findByUserId(String userId) {
+		return userDao.findByUserId(userId);
+	}
+	
 	public User findByUserIdAndPass(String userId, String pass) {
 		return userDao.findByUserIdAndPass(userId, pass);
 	}
