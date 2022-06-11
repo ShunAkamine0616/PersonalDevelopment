@@ -24,7 +24,7 @@ public class GetWordsController {
 	@Autowired
 	MessageSource messageSource;
 
-//	@GetMapping("/getWords")
+//	@GetMapping("getWords")
 //	public List<Word> search(Model model) {
 //
 //		List<Word> wordList = null;
