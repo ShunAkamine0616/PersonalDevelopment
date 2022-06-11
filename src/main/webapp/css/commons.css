@@ -253,7 +253,7 @@ hr {
 /** ログイン画面 **/
 .login_form {
   width: 400px;
-  height: 350px;
+  height: 400px;
   position: absolute;
 	top: 50%;
 	left: 50%;
@@ -279,9 +279,9 @@ hr {
 }
 
 .login_logo {
-  width: 180px;
-  height: 70px;
-  margin-top: 10px;
+	 width: 150px;
+ 	height: auto;
+  	margin-top: 10px;
 }
 
 /** 登録画面 **/

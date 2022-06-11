@@ -203,9 +203,11 @@ function keyDown(e) {
             jp.textContent = japanese; // 日本語を表示
         } 
     } else {
-        missCount++;
-        var aud = new Audio('/audio/blip04.mp3');
-        aud.play();
+		if(e.shiftKey !== true) {
+	        missCount++;
+	        var aud = new Audio('/audio/blip04.mp3');
+	        aud.play();
+        }
     }
 }
 
