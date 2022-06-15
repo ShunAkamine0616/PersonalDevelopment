@@ -40,6 +40,7 @@ public class LoginController {
 	public String index(@ModelAttribute("index") LoginForm loginform, Model model) {
 		System.out.println("aaaaaaaa");
 		System.out.println("req.getContextPath() = " + req.getContextPath());
+		session.setAttribute("contextpath", req.getContextPath());
 		return "index";
 	}
 
