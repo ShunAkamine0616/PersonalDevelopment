@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,12 @@ public class LoginController {
 	MessageSource messageSource;
 	@Autowired
 	ProductService productService;
-	
+	@Autowired
+	HttpServletRequest req;
 	@RequestMapping("index")
 	public String index(@ModelAttribute("index") LoginForm loginform, Model model) {
 		System.out.println("aaaaaaaa");
+		System.out.println("req.getContextPath() = " + req.getContextPath());
 		return "index";
 	}
 
