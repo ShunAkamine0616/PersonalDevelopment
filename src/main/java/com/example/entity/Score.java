@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.sql.Timestamp;
+
 public class Score {
 //	private Integer id;
 //    private String userId;
@@ -8,7 +10,7 @@ public class Score {
     private Integer score;
     private Integer difficulty;
     private Integer miss;
-    private Integer times;
+    private Timestamp times;
 	
 	public Integer getLank() {
 		return lank;
@@ -40,10 +42,10 @@ public class Score {
 	public void setMiss(Integer miss) {
 		this.miss = miss;
 	}
-	public Integer getTimes() {
+	public Timestamp getTimes() {
 		return times;
 	}
-	public void setTimes(Integer times) {
+	public void setTimes(Timestamp times) {
 		this.times = times;
 	}
 }

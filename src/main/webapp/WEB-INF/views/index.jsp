@@ -25,7 +25,6 @@
 				<span>${fn:escapeXml(loginErrMsg)}</span>
 			</c:if>
 		</p>
-		<p>コンテキストパス= ${contextpath}</p>
 		<form:form action="login" modelAttribute="index" method="post">
 			<fieldset>
 				<div class="cp_iptxt">
