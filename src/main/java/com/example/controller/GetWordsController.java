@@ -32,7 +32,7 @@ public class GetWordsController {
 //		return wordList;
 //	}
 	
-	@GetMapping("getWords")
+	@GetMapping("/getWords")
 	public List<Word> search(@RequestParam("level") String level, Model model) {
 		Map<String, String> map = new HashMap<>();
 		List<Word> wordList = null;
@@ -44,9 +44,10 @@ public class GetWordsController {
 	}
 	
 	@GetMapping("socreInsert")
-	public int scoreInsert(@RequestParam("loginId") String loginId, @RequestParam("score") String score,@RequestParam("level") String level,Model model) {
+	public int scoreInsert(@RequestParam("loginId") String loginId, @RequestParam("score") String score,@RequestParam("level") String level,@RequestParam("miss") String miss,Model model) {
 		Integer scoreInt = Integer.parseInt(score);
 		Integer levelInt = Integer.parseInt(level);
-		return scoreService.insert(loginId, scoreInt, levelInt);
+		Integer missInt = Integer.parseInt(miss);
+		return scoreService.insert(loginId, scoreInt, levelInt, missInt);
 	}
 }

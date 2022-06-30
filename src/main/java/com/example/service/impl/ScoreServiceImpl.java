@@ -16,7 +16,7 @@ public class ScoreServiceImpl implements ScoreService {
 	public List<Score> findAll(Integer level) {
 		return scoreDao.findAll(level);
 	}
-	public int insert(String loginId, Integer score, Integer level) {
-		return scoreDao.insert(loginId, score, level);
+	public int insert(String loginId, Integer score, Integer level, Integer miss) {
+		return scoreDao.insert(loginId, score, level, miss);
 	}
 }

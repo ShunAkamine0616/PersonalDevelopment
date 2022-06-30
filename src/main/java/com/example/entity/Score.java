@@ -7,7 +7,8 @@ public class Score {
 	private String loginId;
     private Integer score;
     private Integer difficulty;
-	
+    private Integer miss;
+    private Integer times;
 	
 	public Integer getLank() {
 		return lank;
@@ -32,5 +33,17 @@ public class Score {
 	}
 	public void setDifficulty(Integer difficulty) {
 		this.difficulty = difficulty;
+	}
+	public Integer getMiss() {
+		return miss;
+	}
+	public void setMiss(Integer miss) {
+		this.miss = miss;
+	}
+	public Integer getTimes() {
+		return times;
+	}
+	public void setTimes(Integer times) {
+		this.times = times;
 	}
 }

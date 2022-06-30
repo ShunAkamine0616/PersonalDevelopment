@@ -79,7 +79,7 @@ const coutdownTimer = (tickCallBack, endCallBack
                 jp.textContent = '';
                 endCallBack(); // 終了通知
       			console.log("loginId = " + loginId)
-                fetch('socreInsert?loginId='+loginId+'&score='+(score-missCount)+'&level='+level);
+                fetch('socreInsert?loginId='+loginId+'&score='+(score-missCount)+'&level='+level+'&miss='+missCount);
             } else {
                 tickCallBack(calcTime(nowSec)); // 残り時間通知
             }
