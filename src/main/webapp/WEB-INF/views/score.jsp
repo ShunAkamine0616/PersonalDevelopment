@@ -90,6 +90,8 @@
 					<th>ランキング</th>
 					<th>ユーザーID</th>
 					<th>スコア</th>
+					<th>ミスタイプ</th>
+					<th>プレイ時刻</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -98,6 +100,8 @@
 						<th>${score.lank}</th>
 						<td>${score.loginId}</td>
 						<td>${score.score}</td>
+						<td>${score.miss}</td>
+						<td>${score.times}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
